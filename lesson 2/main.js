@@ -58,8 +58,30 @@ class GoodsList {
     });
     document.querySelector(".goods-list").innerHTML = listHtml;
   }
+  countBasketPrice() {
+    let totalPrice = 0;
+    this.goods.forEach((good) => {
+      totalPrice += good.price;
+    });
+    return totalPrice;
+  }
 }
 
 const list = new GoodsList();
 list.fetchGoods();
 list.render();
+console.log(list.countBasketPrice());
+
+class AddedGoods {
+  constructor(title, price, url) {
+    this.title = title;
+    this.price = price;
+    this.url = url;
+  }
+}
+
+class Cart {
+  constructor() {
+    this.addedGoods = [];
+  }
+}
